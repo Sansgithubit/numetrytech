@@ -1,0 +1,96 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container mt-5">
+        <h3 class="text-center mb-4">Login</h3>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <div class="invalid-feedback">Password cannot be empty.</div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="signup.html">Don't have an account? Sign up</a><br>
+            <a href="forgot-password.html">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script>
+        // Define a simple valid user (For demo purposes, replace with actual API call)
+        const validUser = {
+            email: "sanskrutilonkar06@gmail.com",
+            password: "123456"  // Correct password for validation
+        };
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+
+            // Clear previous errors
+            email.classList.remove("is-invalid");
+            password.classList.remove("is-invalid");
+
+            // Validation
+            let valid = true;
+
+            // Validate email format
+            if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+                email.classList.add("is-invalid");
+                valid = false;
+            }
+
+            // Validate password (non-empty check)
+            if (!password.value) {
+                password.classList.add("is-invalid");
+                valid = false;
+            }
+
+            // Check credentials (for demo purposes, we're comparing against a simple user object)
+            if (valid && email.value === validUser.email && password.value === validUser.password) {
+                // Redirect to welcome page if credentials are correct
+                window.location.href = 'home.html';
+            } else {
+                // Show error if the credentials are incorrect
+                alert("Invalid email or password. Please try again.");
+                valid = false;
+            }
+
+            // If the form is invalid, prevent submission
+            if (!valid) {
+                return false;
+            }
+        });
+    </script>
+
+</body>
+</html>

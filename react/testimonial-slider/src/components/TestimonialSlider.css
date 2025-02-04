@@ -1,0 +1,88 @@
+.testimonial-container {
+    position: relative;
+    /* width: 100%; */
+    max-width: 800px;
+    height:600px;
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+    padding: 30px;
+    border-radius: 50px;
+    
+  }
+  
+  .testimonial-card {
+    background-image:linear-gradient(rgb(212, 81, 166),rgb(200, 223, 243),rgb(136, 70, 198),rgb(203, 203, 106)) ;
+    padding: 20px;
+    border-radius: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    height:600px;
+  }
+  
+  .testimonial-image {
+    width: 300px;
+
+    height: 300px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+   
+  }
+  .testimonial-image:hover{
+    border: 10px solid black;
+    text-overflow: clip;
+
+  }
+  
+  .star-rating {
+    margin-top: 20px;
+    font-size: 50px;
+  }
+  
+  .star {
+    /* font-size: 20px; */
+    color: gray;
+  }
+  
+  .star.filled {
+    color: gold;
+   
+  }
+  .star.filled:hover{
+background-image:linear-gradient(red,purple) ;
+color:palevioletred ;
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: grey;
+    color:whitesmoke;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  button.prev {
+    left: 10px;
+  }
+  
+  button.next {
+    right: 10px;
+  }
+  h1{
+    color: blueviolet;
+    text-align: center;
+    font-size: 60px;
+    
+  }
+  h1:hover{
+    color: cornflowerblue;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    background-image: linear-gradient(red,yellow);
+  }
+  

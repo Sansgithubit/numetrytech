@@ -4,21 +4,21 @@ import { motion } from "framer-motion";
 const testimonials = [
   {
     id: 1,
-    // name: "Dhiraj Lonkar",
+    name: "Dhiraj Lonkar",
      image: './images.jpeg',
     feedback: "This service was amazing! Highly recommended.",
     rating: 5,
   },
   {
     id: 2,
-    // name: "Pradnya Giram",
+     name: "Pradnya Giram",
     image: "./img1.jpeg",
     feedback: "Great experience, will definitely use it again.",
     rating: 4,
   },
   {
     id: 3,
-    // name: "Sanskruti Lonkar",
+     name: "Sanskruti Lonkar",
     image: "./img2.jpg",
     feedback: "Excellent support and great quality.",
     rating: 5,

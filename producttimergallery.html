@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery with Timer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* body {
+            background: linear-gradient(135deg, #a1d6db, #1bb5ab);
+        } */
+        .product-card {
+            transition: transform 0.3s;
+            cursor: pointer;
+            margin: 15px 0;
+        }
+        .product-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            background-image: linear-gradient(rgb(220, 19, 163),darkblue);
+        }
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card {
+            border-radius: 50px;
+            overflow: hidden;
+            text-align: center;
+            background: #b07171;
+        }
+        .card-body {
+            background-color: #b9e8e8;
+            padding: 15px;
+            border-top: 5px solid #007bff;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(175, 62, 245);
+        }
+        .filter-btn {
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        .filter-btn:hover {
+            background-image: linear-gradient(yellow,purple);
+            color: white;
+        }
+        h2{
+            font-family: cursive;
+            font-size: 40px;
+            background-image: linear-gradient(red,pink);
+        }
+        h2:hover{
+            color: #007bff;
+            background-image: linear-gradient(red,pink);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center"><b>Flash Sale Ends In:</b> <span id="countdown" class="countdown"></span></h2>
+        <div class="text-center my-3">
+            <button class="btn btn-primary filter-btn" onclick="filterProducts('all')">All</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterProducts('mobile')">Mobile</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterProducts('laptop')">Laptop</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterProducts('headphone')">Headphone</button>
+        </div>
+        <div class="row justify-content-center" id="product-list">
+            <div class="col-md-4 product-card" data-category="mobile" onclick="openProduct('mb1.jpeg')">
+                <div class="card">
+                    <img src="mb1.jpeg" class="card-img-top" alt="Mobile 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile Phone 1</h5>
+                        <p class="card-text">Price: 15000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 product-card" data-category="mobile" onclick="openProduct('mb2.jpeg')">
+                <div class="card">
+                    <img src="mb2.jpeg" class="card-img-top" alt="Mobile 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile Phone 2</h5>
+                        <p class="card-text">Price: 20000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 product-card" data-category="laptop" onclick="openProduct('lp1.jpeg')">
+                <div class="card">
+                    <img src="lp1.jpeg" class="card-img-top" alt="Laptop 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Laptop 1</h5>
+                        <p class="card-text">Price: 120000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 product-card" data-category="laptop" onclick="openProduct('lp2.jpeg')">
+                <div class="card">
+                    <img src="lp2.jpeg" class="card-img-top" alt="Laptop 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Laptop 2</h5>
+                        <p class="card-text">Price: 150000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 product-card" data-category="headphone" onclick="openProduct('hp1.jpeg')">
+                <div class="card">
+                    <img src="hp1.jpeg" class="card-img-top" alt="Headphone 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Headphone 1</h5>
+                        <p class="card-text">Price: 1000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 product-card" data-category="headphone" onclick="openProduct('hp2.jpeg')">
+                <div class="card">
+                    <img src="hp2.jpeg" class="card-img-top" alt="Headphone 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Headphone 2</h5>
+                        <p class="card-text">Price: 1500</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function startCountdown(durationInSeconds) {
+            let countdownElement = document.getElementById('countdown');
+            let timeLeft = durationInSeconds;
+            
+            function updateCountdown() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (timeLeft > 0) {
+                    timeLeft--;
+                } else {
+                    clearInterval(timer);
+                    countdownElement.textContent = "Sale Over!";
+                }
+            }
+            
+            let timer = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+
+        function filterProducts(category) {
+            let products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'all' || product.getAttribute('data-category') === category) {
+                    product.style.display ='block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        function openProduct(image) {
+            window.open(image, '_blank');
+        }
+
+        startCountdown(600);
+    </script>
+</body>
+</html>
